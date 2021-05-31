@@ -1,34 +1,38 @@
-# terraform-digitalocean-wordpress
+# terraform-digitalocean-chia
 
-A Terraform module for creating a fully functional WordPress Droplet.
+Desarrollo de Modulos de Terraform para configurar la arquitectura de Chia Latam
 
 # Module Input Variables
 
 Defaults:
 
-* `image` - The Droplet image ID or slug, defaults to `wordpress-18-04`
-* `name` - The name of the Droplet, defaults to `wordpress`
-* `region` - The region of the Droplet, defaults to `nyc1`
-* `size` - The instance size, defaults to `1gb`
-* `backups` - Boolean controlling if backups are made, defaults to `false`
-* `monitoring` - Boolean controlling whether monitoring agent is installed, defaults to `false`
-* `ipv6` - Boolean controlling if IPv6 is enabled, defaults to `false`
-* `private_networking` - Boolean controlling if private networks are enabled, defaults to `false`
-* `resize_disk` - Boolean controlling whether to increase the disk size when resizing a Droplet, defaults to `true`
+* `do_token` - Token API del usuario de digital Ocean.
+* `domain` - Dominio principal en cuestion. En este caso chialatam.net.
+* `ip` - IP de la app.
+* `app_instance` - Cantidad de instancias de la app. `nyc1`
+* `app_size` - Tamaño de la imagen en DO. Default: `basic-xxs`
+* `app_name` - Nombre de la aplicación.
+* `app_environment` - Tecnología de la aplicación definida en DO.
+* `app_src_repo` - Link del repositorio en github.
+* `app_src_branch` - Nombre del Branch utilizado. defaults to `master`
+* `app_env_from_mail` - Mail utilizado para el From.
+* `app_env_from_name` - Nombre utilizado para el From.
+* `app_env_to_email` - Destino de los mails enviados de la web.
+* `app_env_sendgrid_api` - Api Key de Sendgrid el servicio utilizado para enviar mails en la web
 
 # Module Outputs
 
-* `ip` - The public ipv4 address for the Droplet
+* `domain_output` - La zona del dominio
+* `app_output` - URL de la APP gerada automaticamente.
+* `app_live_url` - URL publica de la APP.
+* `app_created_at` - Fecha de creación de la APP.
+* `app_app_updated_at` - Fecha de actualización de la APP.
 
 # Usage
 
 ## Generate a Personal Access Token
 
 https://www.digitalocean.com/community/tutorials/how-to-use-the-digitalocean-api-v2#how-to-generate-a-personal-access-token
-
-## Examples
-
-Take a look at [wordpress.tf](./examples/basic/wordpress.tf) for a working example.
 
 ## Create a file
 
@@ -70,10 +74,6 @@ Output Droplet information:
 terraform show
 ```
 
-## Enabling WordPress
+# Contribución
 
-In order to start the wordpress installation, you will need to ssh into the instance. The credentials will be provided via e-mail.
-
-# Contributing
-
-When contributing to this repository, please first discuss the change you wish to make via a Github issue.
+Si nos ayuda a contribuir a este repositorio, lo idea sería primero que discuta el cambio que desea realizar a través de un Issues de Github antes de hacer un Pull Request.

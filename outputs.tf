@@ -9,6 +9,20 @@ output "domain_output" {
 }
 
 output "app_output" {
-  description = "Info App"
+  description = "URL Creada por Digital Ocean"
   value = module.app.app_default_ingress
+}
+
+output "app_live_url" {
+  value       = module.app.app_live_url
+  description = "URL Principal"
+}
+
+output "app_created_at" {
+  value       = module.app.app_created_at
+  description = "Creación de la APP"
+}
+output "app_app_updated_at" {
+  value       = module.app.app_updated_at
+  description = "Úlitma actualización de la APP"
 }
